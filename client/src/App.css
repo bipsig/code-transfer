@@ -1,0 +1,238 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+/* Editor Section */
+.editor-section {
+  margin-bottom: 40px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.input-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: 'Courier New', monospace;
+  resize: vertical;
+  transition: border-color 0.3s;
+}
+
+.input-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.btn-save {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 14px 40px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-save:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+.btn-save:active {
+  transform: translateY(0);
+}
+
+.message {
+  margin-top: 15px;
+  padding: 12px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border-radius: 6px;
+  border-left: 4px solid #4caf50;
+}
+
+/* Files Section */
+.files-section {
+  margin-bottom: 30px;
+}
+
+.files-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.files-header h2 {
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.btn-new {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.btn-new:hover {
+  background: #45a049;
+}
+
+.files-list {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.no-files {
+  text-align: center;
+  color: #999;
+  padding: 20px;
+}
+
+.file-item {
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  background: #f5f5f5;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.file-item:hover {
+  background: #e3f2fd;
+  transform: translateX(5px);
+}
+
+.file-item.active {
+  background: #667eea;
+  color: white;
+}
+
+.file-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.file-date {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.file-item.active .file-date {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Content Display */
+.content-display {
+  background: #f9f9f9;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.content-display h3 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.code-content {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 20px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Scrollbar Styling */
+.files-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.files-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.files-list::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.files-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
