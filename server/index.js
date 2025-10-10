@@ -7,10 +7,24 @@ const mongo_uri = `mongodb+srv://admin:admin@cluster0.eudjrrc.mongodb.net/?retry
 
 const app = express();
 app.use(express.json());
+import cors from "cors";
+
+const allowedOrigins = [
+  "http://localhost:5173",               // local dev
+  "https://crovixa-client.onrender.com"  // hosted frontend
+];
+
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
+
 
 
 
