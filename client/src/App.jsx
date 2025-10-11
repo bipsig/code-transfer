@@ -20,6 +20,8 @@ function App() {
       const response = await fetch(`${API_URL}/files`);
       const data = await response.json();
       setFiles(data);
+      setMessage('Files refreshed successfully');
+      setTimeout(() => setMessage(''), 2000);
     } catch (error) {
       console.error('Error fetching files:', error);
       setMessage('Error fetching files');
@@ -68,6 +70,29 @@ function App() {
     setMessage('');
   };
 
+  const handleCloseFile = () => {
+    setSelectedFile(null);
+    setMessage('File closed');
+    setTimeout(() => setMessage(''), 2000);
+  };
+
+  const handleCopyContent = async () => {
+    if (selectedFile) {
+      try {
+        await navigator.clipboard.writeText(selectedFile.content);
+        setMessage('Content copied to clipboard!');
+        setTimeout(() => setMessage(''), 2000);
+      } catch (error) {
+        console.error('Error copying content:', error);
+        setMessage('Failed to copy content');
+      }
+    }
+  };
+
+  const handleRefreshFiles = () => {
+    fetchFiles();
+  };
+
   return (
     <div className="App">
       <div className="container">
@@ -108,9 +133,14 @@ function App() {
         <div className="files-section">
           <div className="files-header">
             <h2>Saved Files</h2>
-            <button onClick={handleNewFile} className="btn-new">
-              New File
-            </button>
+            <div className="button-group">
+              <button onClick={handleNewFile} className="btn-new">
+                New File
+              </button>
+              <button onClick={handleRefreshFiles} className="btn-refresh">
+                Refresh
+              </button>
+            </div>
           </div>
 
           <div className="files-list">
@@ -136,7 +166,17 @@ function App() {
         {/* File Content Display */}
         {selectedFile && (
           <div className="content-display">
-            <h3>File: {selectedFile.filename}</h3>
+            <div className="content-header">
+              <h3>File: {selectedFile.filename}</h3>
+              <div className="button-group">
+                <button onClick={handleCopyContent} className="btn-copy">
+                  Copy Content
+                </button>
+                <button onClick={handleCloseFile} className="btn-close">
+                  Close File
+                </button>
+              </div>
+            </div>
             <pre className="code-content">{selectedFile.content}</pre>
           </div>
         )}
