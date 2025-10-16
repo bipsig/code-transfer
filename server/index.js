@@ -8,6 +8,9 @@ const mongo_uri = `mongodb+srv://admin:admin@cluster0.eudjrrc.mongodb.net/?retry
 const app = express();
 app.use(express.json());
 
+app.use(express.json({ limit: '100mb' })); // Adjust size as needed
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
+
 const allowedOrigins = [
   "http://localhost:5173",               // local dev
   "https://crovixa-client.onrender.com"  // hosted frontend
